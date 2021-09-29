@@ -52,3 +52,8 @@ export interface OneDayForecast{
     name: string;
     cod: number;
 }
+
+export interface WeatherError{
+  cod: string;
+  message: string;
+}

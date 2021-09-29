@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { WeatherService } from '../weather.service';
 
-import { OneDayForecast } from 'src/types/weather';
+import { OneDayForecast, WeatherError } from 'src/types/weather';
 
 @Component({
   selector: 'app-todays-weather',
@@ -12,15 +12,31 @@ export class TodaysWeatherComponent implements OnInit {
 
   weatherProp!: OneDayForecast;
 
+  city: string = 'Detroit';
+
+  showWeeksForecast : boolean = false;
+
   constructor(
     private service: WeatherService,
   ) {}
 
   ngOnInit(): void {
-    this.service.getTodaysWeather().subscribe((obj) => {
+    this.service.getTodaysWeather(this.city).subscribe((obj) => {
       this.weatherProp = obj;
-      this.weatherProp
-      console.log(this.weatherProp);
     });
+    
   }
+
+  toggleWeeksForecast () : void{
+    this.showWeeksForecast = !this.showWeeksForecast;
+  }
+
+  searchLocation (event: any) : void{
+    this.service.getTodaysWeather(event.target.value).subscribe((obj) => {
+      this.weatherProp = obj;
+    },(error: WeatherError) => console.log(error.message));
+  }
+  
+
+
 }

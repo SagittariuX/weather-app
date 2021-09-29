@@ -18,6 +18,8 @@ import { ChiplistComponent } from './shared/chiplist/chiplist.component';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { WeeksWeatherComponent } from './weeks-weather/weeks-weather.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     ChiplistComponent,
     KelvinToCelciusPipe,
     KelvinToFahrenheitPipe,
+    WeeksWeatherComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +38,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     BrowserAnimationsModule,
     FlexLayoutModule,
     MatToolbarModule,
+    MatSlideToggleModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
