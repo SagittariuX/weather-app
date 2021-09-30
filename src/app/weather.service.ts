@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { url } from 'inspector';
 import { OneDayForecast } from 'src/types/weather';
 
 @Injectable({
@@ -23,7 +22,7 @@ export class WeatherService {
 
   // https://openweathermap.org/api/one-call-api
   getWeeksWeather(lat: number, lon: number){
-    return this.http.get(
+    return this.http.get<any>(
       `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${this.apiKey}`,
       {responseType: 'json'}
     )

@@ -15,11 +15,14 @@ import { TodaysWeatherComponent } from './todays-weather/todays-weather.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './shared/header/header.component';
 import { ChiplistComponent } from './shared/chiplist/chiplist.component';
+import { WeeksWeatherComponent } from './weeks-weather/weeks-weather.component';
+import { WeathercardComponent } from './shared/weathercard/weathercard.component';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { WeeksWeatherComponent } from './weeks-weather/weeks-weather.component';
+import { MatCardModule } from '@angular/material/card';
+
 
 @NgModule({
   declarations: [
@@ -30,6 +33,7 @@ import { WeeksWeatherComponent } from './weeks-weather/weeks-weather.component';
     KelvinToCelciusPipe,
     KelvinToFahrenheitPipe,
     WeeksWeatherComponent,
+    WeathercardComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +43,7 @@ import { WeeksWeatherComponent } from './weeks-weather/weeks-weather.component';
     FlexLayoutModule,
     MatToolbarModule,
     MatSlideToggleModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent],

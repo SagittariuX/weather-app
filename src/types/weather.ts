@@ -37,6 +37,24 @@ export interface Sys{
     sunset: number;
 }
 
+export interface Temperature{
+  day: number;
+  min: number;
+  max: number;
+  night: number;
+  eve: number;
+  morn: number;
+}
+
+export interface FeelsLike{
+  day: number;
+  night: number;
+  eve: number;
+  morn: number;
+}
+
+
+
 export interface OneDayForecast{
     coord: Coord;
     weather: Weather[];
@@ -51,6 +69,26 @@ export interface OneDayForecast{
     id: number;
     name: string;
     cod: number;
+}
+
+export interface DailyForecast{
+  dt: number;
+  sunrise: number;
+  sunset: number;
+  moonrise: number;
+  moonset: number;
+  moon_phase: number;
+  temp: Temperature;
+  feels_like: FeelsLike;
+  pressure: number;
+  humidity: number;
+  dew_point: number;
+  wind_speed: number;
+  wind_gust: number;
+  weather: Weather[];
+  clouds: number;
+  pop: number;
+  uvi: number;
 }
 
 export interface WeatherError{

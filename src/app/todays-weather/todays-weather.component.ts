@@ -1,7 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { WeatherService } from '../weather.service';
 
-import { OneDayForecast, WeatherError } from 'src/types/weather';
+import { OneDayForecast,DailyForecast , WeatherError } from 'src/types/weather';
 
 @Component({
   selector: 'app-todays-weather',
@@ -10,11 +10,12 @@ import { OneDayForecast, WeatherError } from 'src/types/weather';
 })
 export class TodaysWeatherComponent implements OnInit {
 
-  weatherProp!: OneDayForecast;
+  todaysForecast!: OneDayForecast;
+  weeksForecast!: DailyForecast[];
 
   city: string = 'Detroit';
 
-  showWeeksForecast : boolean = false;
+  showWeeksForecast : boolean = true;
 
   constructor(
     private service: WeatherService,
@@ -22,9 +23,14 @@ export class TodaysWeatherComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getTodaysWeather(this.city).subscribe((obj) => {
-      this.weatherProp = obj;
+      this.todaysForecast = obj;
+
+      this.service.getWeeksWeather(this.todaysForecast.coord.lat, this.todaysForecast.coord.lon).subscribe(obj => {
+        this.weeksForecast = obj.daily;
+        console.log(this.weeksForecast);
+      })
+
     });
-    
   }
 
   toggleWeeksForecast () : void{
@@ -33,7 +39,12 @@ export class TodaysWeatherComponent implements OnInit {
 
   searchLocation (event: any) : void{
     this.service.getTodaysWeather(event.target.value).subscribe((obj) => {
-      this.weatherProp = obj;
+      this.todaysForecast = obj;
+      
+      this.service.getWeeksWeather(this.todaysForecast.coord.lat, this.todaysForecast.coord.lon).subscribe(obj => {
+        this.weeksForecast = obj.daily;
+      })
+
     },(error: WeatherError) => console.log(error.message));
   }
   

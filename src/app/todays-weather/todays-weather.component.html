@@ -1,9 +1,9 @@
 <div class="todays-weather-container">
-  <h1>{{ weatherProp.name }}</h1>
-  <p>Temp: {{ weatherProp.main.temp | kelvinToCelcius }}</p>
-  <h3>Max: {{ weatherProp.main.temp_max | kelvinToCelcius }}</h3>
-  <h3>Min: {{ weatherProp.main.temp_min | kelvinToCelcius }}</h3>
+  <h1>{{ todaysForecast.name }}</h1>
+  <p>Temp: {{ todaysForecast.main.temp | kelvinToCelcius }}</p>
+  <h3>Max: {{ todaysForecast.main.temp_max | kelvinToCelcius }}</h3>
+  <h3>Min: {{ todaysForecast.main.temp_min | kelvinToCelcius }}</h3>
   <input type="search" placeholder="Detroit,Mi" (keyup.enter)="searchLocation($event)"/>
-  <mat-slide-toggle color="primary" (input)="toggleWeeksForecast()">Show Week's Forecast</mat-slide-toggle>
+  <mat-slide-toggle color="primary" [checked]="showWeeksForecast"  (input)="toggleWeeksForecast()">Show Week's Forecast</mat-slide-toggle>
 </div>
-<app-weeks-weather *ngIf="showWeeksForecast"></app-weeks-weather>
+<app-weeks-weather *ngIf="showWeeksForecast" [forecast] ="weeksForecast"></app-weeks-weather>
