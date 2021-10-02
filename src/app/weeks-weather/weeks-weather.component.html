@@ -1,5 +1,5 @@
 <div *ngIf="!forecast">Loading</div>
 
-<div *ngIf="forecast" class="week-forecast" fxLayout="row" fxLayoutAlign="space-around">
+<div *ngIf="forecast" class="week-forecast" fxLayout="row" fxLayoutGap='8px'>
   <app-weathercard *ngFor="let f of forecast" [forecast]="f"> </app-weathercard>
 </div>

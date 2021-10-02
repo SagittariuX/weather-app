@@ -1,3 +1,8 @@
-<mat-card *ngIf="forecast" color='primary'>
-    <mat-card-title>{{ forecast.weather[0].main }}</mat-card-title>
+<mat-card *ngIf="forecast" class="weathercard" color="primary">
+  <mat-card-title>{{ forecast.weather[0].main }}</mat-card-title>
+  <mat-card-content>
+      <p>Temp: {{ forecast.temp.day }}</p>
+      <p>Max: {{ forecast.temp.max }}</p>
+      <p>Min: {{ forecast.temp.min }}</p>
+    </mat-card-content>
 </mat-card>

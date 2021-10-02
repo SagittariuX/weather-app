@@ -16,6 +16,7 @@ export class TodaysWeatherComponent implements OnInit {
   city: string = 'Detroit';
 
   showWeeksForecast : boolean = true;
+  showCelciusTemp: boolean = true;
 
   constructor(
     private service: WeatherService,
